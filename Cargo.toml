@@ -1,0 +1,42 @@
+[package]
+authors = ["andrew"]
+categories = []
+edition = "2018"
+keywords = []
+license = "MIT OR Apache-2.0"
+name = "practice-session-20210106"
+readme = "README.md"
+repository = "https://github.com/u007d/practice-session-20210106"
+version = "0.1.0"
+
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[dependencies]
+structopt = "*"
+thiserror = "1"
+
+[profile.dev]
+debug = true
+debug-assertions = true
+lto = false
+opt-level = 0
+panic = "unwind"
+rpath = false
+
+[profile.release]
+codegen-units = 1
+debug = false
+debug-assertions = false
+lto = "fat"
+opt-level = 3
+panic = "unwind"
+rpath = false
+
+[profile.test]
+debug = true
+debug-assertions = true
+lto = false
+opt-level = 0
+rpath = false
