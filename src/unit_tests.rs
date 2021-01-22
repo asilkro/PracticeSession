@@ -37,9 +37,9 @@ fn wordcount__filename_is_being_read(){
 
 
 /*Larger Question:
-How do we distinguish an item from its contents? It seems like that std::fs::file probably has the clue.
-This is the type to 
+How do I make this distinguish an item from its contents? It seems like that std::fs::file probably has the clue.
 
+Is there a TO_STRING or TO_FILECONTENTS type function already present that can change this from reading to a type?
  */
 
 fn word_count__(){
