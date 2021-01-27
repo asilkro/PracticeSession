@@ -23,15 +23,41 @@
 // #![warn(clippy::cargo, clippy::restriction, missing_docs, warnings)]
 // #![allow(clippy::implicit_return)]
 
-use {lib::{self, Args, error::Result, word_count}};
-use structopt::StructOpt;
+use std::fs::File;
+use std::io::Read;
 
-fn main() -> Result<()>
-{
-    let args=Args::from_args();
-    let filename=args.filename;
-    //Challenges w/ Rust Borrow Checker -> https://doc.rust-lang.org/1.8.0/book/references-and-borrowing.html
-    println!("{} contains {} words.", &filename, word_count(&filename));
-    //Using the ? at the end is the try -> pass result to output
+type Result<T, E = Box<dyn std::error::Error>> = std::result::Result<T, E>;
+
+fn main() -> Result<()> {
+    // "foo.txt" provided by user on command-line
+    let my_file = File::open("foo.txt")?;
+
+    let count = word_count(my_file)?;
+    println!("{} words found", count);
+
     Ok(())
+}
+
+fn word_count<R: Read>(mut reader: R) -> Result<usize> {
+    //... some word-counting logic goes here
+    let words = {
+        let mut buffer = String::new();
+        reader.read_to_string(&mut buffer)?;
+        buffer
+    };
+    let count = words.split_whitespace().count();
+    Ok(count)
+}
+
+#[test]
+fn word_count__hello_world_returns_count_of_2() {
+    // Given
+    let expected_result = 2;
+    let input = "Hello, world!";
+
+    // When
+    let res = word_count(input.as_bytes()).unwrap();
+
+    // Then
+    assert_eq!(res, expected_result);
 }
