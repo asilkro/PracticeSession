@@ -30,11 +30,13 @@ pub mod error;
 mod unit_tests;
 pub use args::Args;
 use std::io::Read;
+use std::io;
 
 
 #[allow(clippy::missing_const_for_fn, clippy::needless_pass_by_value)] //remove when `lib_main` impl'ed
-#[must_use] pub fn word_count<R:Read>(_input_data: R) -> usize {
-    0
+#[must_use] pub fn word_count<R:Read>(mut input_data: R) -> io::Result<usize> {
+    let buf = &mut [0;10];
+    input_data.read(buf)
 }
 // Use usize for counting when it can't be negative-> https://doc.rust-lang.org/std/primitive.usize.html
 // thing<TYPENAME GOES HERE> -> by convention, Keep It Short and Mnemonic
