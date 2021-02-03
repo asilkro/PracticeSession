@@ -48,16 +48,3 @@ fn word_count<R: Read>(mut reader: R) -> Result<usize> {
     let count = words.split_whitespace().count();
     Ok(count)
 }
-/*
-#[test]
-fn word_count__hello_world_returns_count_of_2() {
-    // Given
-    let expected_result = 2;
-    let input = "Hello, world!";
-
-    // When
-    let res = word_count(input.as_bytes()).unwrap();
-
-    // Then
-    assert_eq!(res, expected_result);
-}*/

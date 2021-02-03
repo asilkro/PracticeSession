@@ -10,8 +10,8 @@ use std::error::Error;
 fn word_count__empty_input_returns_zero() {
     // Given (setup)
     let expected_wordcount = 0;
-    let input_data = "".as_bytes();
-    let sut=word_count;
+    let input_data = words;
+    let sut= word_count;
 
     // When (action)
     let result = sut(input_data);
@@ -19,15 +19,3 @@ fn word_count__empty_input_returns_zero() {
     //Then
     assert_eq!(result, expected_wordcount);}
 
-// #[test]
-// fn word_count__input_with_one_returns_one() {
-//     // Given (setup)
-//     let expected_wordcount = 1;
-//     let input_data = "something".as_bytes();
-//     let sut=word_count;
-//
-//     // When (action)
-//     let result = sut(input_data);
-//
-//     //Then
-//     assert_eq!(result, expected_wordcount);}
