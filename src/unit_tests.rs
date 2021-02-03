@@ -9,13 +9,13 @@ use std::error::Error;
 //sut = subject under test
 fn word_count__empty_input_returns_zero() {
     // Given (setup)
-    let expected_wordcount = 0;
-    let input_data = words;
+    let expected_result = Result::Ok(0);
+    let input_data = "".as_bytes();
     let sut= word_count;
 
     // When (action)
     let result = sut(input_data);
 
     //Then
-    assert_eq!(result, expected_wordcount);}
-
+    assert_eq!(result, expected_result);
+}

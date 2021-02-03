@@ -31,15 +31,25 @@ mod unit_tests;
 pub use args::Args;
 use std::io;
 use std::io::{Read, BufReader};
+use crate::error::Result;
 
 // Read https://doc.rust-lang.org/std/io/trait.Read.html
 #[allow(clippy::missing_const_for_fn, clippy::needless_pass_by_value)] //remove when `lib_main` impl'ed
-#[must_use] pub fn word_count<R:Read>(mut input_data: R) -> io::Result<usize> {
-    let words:R = {
-        let mut buffer:string = String::new();
-        input_data.read( &mut buffer)?;
+#[must_use] pub fn word_count<R:Read>(mut reader: R) -> Result<usize> {
+    // Continue development as you see fit
+    // let words:R = {
+    //     let mut buffer = Vec::new();
+    //     input_data.read( &mut buffer)?;
+    //     buffer
+    // };
+
+    let input_data = {
+        let mut buffer = String::new();
+        reader.read_to_string(&mut buffer)?;
         buffer
     };
+
+    Ok(input_data.split_whitespace().count())
 }
 
 // Read method REQUIRES Result type of usize:  https://doc.rust-lang.org/std/io/trait.Read.html#required-methods

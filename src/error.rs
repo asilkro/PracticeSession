@@ -8,6 +8,8 @@ pub type Result<T, E = Error> = std::result::Result<T, E>;
 pub enum Error {
     #[error("{}: {:?}", msg::ERR_ARG_NOT_CONVERTIBLE_TO_UTF_8, 0)]
     ArgNotConvertibleToUtf8(std::ffi::OsString),
+    #[error("IoError: {}", 0)]
+    IoError(String),
 }
 
 // Note: `std::ffi::OsString is not `Error` so `thiserror` `#[from]` is not supported,
@@ -15,5 +17,11 @@ pub enum Error {
 impl From<std::ffi::OsString> for Error {
     fn from(err: OsString) -> Self {
         Self::ArgNotConvertibleToUtf8(err)
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Self {
+        Self::IoError(err.to_string())
     }
 }
