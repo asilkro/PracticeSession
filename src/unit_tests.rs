@@ -50,9 +50,9 @@ fn word_count__command_line_input_passes() {
     let sut = word_count;
 
 // When (action)
-    let result = sut(input_data, flag);
+    let result = sut(input_data, read_item,read_flags);
 
 // Then (output)
-
+    print!(result);
 
 }
