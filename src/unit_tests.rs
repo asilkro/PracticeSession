@@ -53,6 +53,6 @@ fn word_count__command_line_input_passes() {
     let result = sut(input_data, read_item,read_flags);
 
 // Then (output)
-    print!(result);
+    print!("{}",result);
 
 }
