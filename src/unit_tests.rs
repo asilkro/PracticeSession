@@ -50,12 +50,13 @@ fn word_count__command_line_input_passes() {
     let sut = word_count;
 
 // When (action)
-    let result = sut(input_data, read_item,read_flags);
-
+    let result = sut(input_data, read_item, read_flags);
+    // sut expects 1 argument, but fails because I pass 3...sut needs to be changed somehow to work.
+    //TODO figure out sut arguments
 // Then (output)
     print!("file returned {}", result);
-// There's probably a better way to implement display.
-    // Maybe display isn't what I want?
     // https://doc.rust-lang.org/std/path/struct.Display.html
+//TODO deeper dive on display - is there a better alternative to do what I want
+    // What do I want output to look like
 
 }
