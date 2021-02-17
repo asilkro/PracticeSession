@@ -43,8 +43,8 @@ use std::env;
 // Given (setup)
 fn word_count__command_line_input_passes() {
     let cl_args: Vec<String> = env::args().collect();
-    let read_item= &cl_args[1];
-    let read_flags = &cl_args[2];
+    let read_item= &cl_args[1]; // Where we'd feed a file
+    let read_flags = &cl_args[2]; // If I wanted to have a flag
 
     let input_data = "".as_bytes();
     let sut = word_count;
