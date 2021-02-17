@@ -53,7 +53,7 @@ fn word_count__command_line_input_passes() {
     let result = sut(input_data, read_item,read_flags);
 
 // Then (output)
-    print!("{}",result);
+    print!("file returned {}", result);
 // There's probably a better way to implement display.
     // Maybe display isn't what I want?
     // https://doc.rust-lang.org/std/path/struct.Display.html
