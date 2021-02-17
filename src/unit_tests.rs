@@ -43,7 +43,7 @@ use std::env;
 // Given (setup)
 fn word_count__command_line_input_passes() {
     let cl_args: Vec<String> = env::args().collect();
-    let read_item = &cl_args[1];
+    let read_item= &cl_args[1];
     let read_flags = &cl_args[2];
 
     let input_data = "".as_bytes();
@@ -54,5 +54,8 @@ fn word_count__command_line_input_passes() {
 
 // Then (output)
     print!("{}",result);
+// There's probably a better way to implement display.
+    // Maybe display isn't what I want?
+    // https://doc.rust-lang.org/std/path/struct.Display.html
 
 }

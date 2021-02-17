@@ -32,10 +32,11 @@ pub use args::Args;
 use std::io;
 use std::io::{Read, BufReader};
 use crate::error::Result;
+use std::fmt::Display;
 
 // Read https://doc.rust-lang.org/std/io/trait.Read.html
 #[allow(clippy::missing_const_for_fn, clippy::needless_pass_by_value)] //remove when `lib_main` impl'ed
-#[must_use] pub fn word_count<R:Read>(mut reader: R) -> Result<usize> {
+#[must_use] pub fn word_count<R:Read>(mut reader: R) -> Result<impl Display> {
     // Continue development as you see fit
     // let words:R = {
     //     let mut buffer = Vec::new();
